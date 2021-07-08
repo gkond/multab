@@ -1,6 +1,13 @@
 import React, {useState} from "react";
 import "./App.css";
 
+/* TODO:
+- 3 жизни
+- имя пользователя
+- карточки по одной
+- статистика ошибок
+ */
+
 interface Example {
   id: number;
   a: number;
