@@ -1,5 +1,6 @@
 import React from "react";
 import {Example} from "../../../types";
+import "./styles.css";
 
 export const ViewExamples: React.FunctionComponent<{
   examples: Example[],

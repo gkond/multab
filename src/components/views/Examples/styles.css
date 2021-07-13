@@ -1,0 +1,45 @@
+.examplesList {
+  margin: 1em 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 5%;
+  row-gap: 1em;
+}
+
+.example {
+  list-style: none;
+  padding: 0.5em;
+  border: 1px solid #999;
+  border-radius: 8px;
+}
+
+.example_id {
+  margin: 0 0 1em;
+  color: #999;
+  font-size: 10px;
+  line-height: 1;
+}
+.example_id:after {
+  content: ".";
+}
+
+.example_line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.example_number {
+  margin: 0 0.25em;
+}
+
+.example_sign {
+  margin: 0 0.25em;
+}
+
+.example_input {
+  margin-left: 0.25em;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import {Example} from "../../../types";
+import "./styles.css";
 
 export const ViewResults: React.FunctionComponent<{
   examples: Example[],
@@ -13,10 +14,10 @@ export const ViewResults: React.FunctionComponent<{
   onRestart
 }) => (
   <div>
-    <ul className="examplesList">
+    <ul className="resultsList">
       {examples.map(({id, a, b}) => (
         <li
-          className="example"
+          className="result"
           key={id}
         >
           <span>{id + 1} {a} &times; {b}</span>
