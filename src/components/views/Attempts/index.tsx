@@ -79,13 +79,13 @@ export const ViewAttempts: React.FunctionComponent<{
             user: 'default',
             solution: value
           });
-          if (index < attempts.length - 1) {
-            setTimeout(() => {
+          setTimeout(() => {
+            if (index < attempts.length - 1) {
               setIndex(index + 1);
-            }, 500)
-          } else {
-            onSubmit();
-          }
+            } else {
+              onSubmit();
+            }
+          }, 500)
         }}
       />
       <div>
@@ -95,5 +95,4 @@ export const ViewAttempts: React.FunctionComponent<{
       </div>
     </div>
   );
-
 }
