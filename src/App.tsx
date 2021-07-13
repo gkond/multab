@@ -30,9 +30,9 @@ const generateAttempts = (count: number): Attempt[] => {
     .fill(0)
     .map((_, index): Attempt => ({
       id: index,
-      user: 'default',
       a: generateRandomInt(FROM, TO),
       b: generateRandomInt(FROM, TO),
+      user: null,
       solution: null
     }));
 }
@@ -41,7 +41,8 @@ const App = () => {
   const [view, setView] = useState(VIEWS.SETTINGS)
   const [attemptCount, setAttemptCount] = useState(DEFAULT_ATTEMPT_COUNT)
   const [attempts, setAttempts] = useState<Attempt[]>([]);
-  const [solutions, setSolutions] = useState<number[]>([]);
+  const [solutions, setSolutions] = useState<Attempt[]>([]);
+  console.log('solutions', solutions);
   return (
     <div className="app">
       {view === VIEWS.SETTINGS && (
@@ -68,8 +69,7 @@ const App = () => {
           content={(
             <ViewAttempts
               attempts={attempts}
-              solutions={solutions}
-              onSolutionsChange={(nextSolutions) => setSolutions(nextSolutions)}
+              onSolveAttempt={(nextSolution) => setSolutions([...solutions, nextSolution])}
               onCancel={() => setView(VIEWS.SETTINGS)}
               onSubmit={() => setView(VIEWS.RESULTS)}
             />
@@ -81,7 +81,6 @@ const App = () => {
           title={"Результат"}
           content={(
             <ViewResults
-              attempts={attempts}
               solutions={solutions}
               onSettingsChange={() => setView(VIEWS.SETTINGS)}
               onRestart={() => {

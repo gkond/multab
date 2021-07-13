@@ -3,27 +3,25 @@ import {Attempt} from "../../../types";
 import "./styles.css";
 
 export const ViewResults: React.FunctionComponent<{
-  attempts: Attempt[],
-  solutions: number[],
+  solutions: Attempt[],
   onSettingsChange: () => void,
   onRestart: () => void,
 }> = ({
-  attempts,
   solutions,
   onSettingsChange,
   onRestart
 }) => (
   <div>
     <ul className="resultsList">
-      {attempts.map(({id, a, b}) => (
+      {solutions.map((solution) => (
         <li
           className="result"
-          key={id}
+          key={solution.id}
         >
-          <span>{id + 1} {a} &times; {b}</span>
-          <span> = {solutions[id]} </span>
-          {solutions[id] === a * b && 'верно'}
-          {solutions[id] !== a * b && 'не верно'}
+          <span>{solution.id + 1} {solution.a} &times; {solution.b}</span>
+          <span> = {solution.solution} </span>
+          {solution.solution === solution.a * solution.b && 'верно'}
+          {solution.solution !== solution.a * solution.b && 'не верно'}
         </li>
       ))}
     </ul>

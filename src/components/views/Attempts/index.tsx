@@ -1,59 +1,93 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Attempt} from "../../../types";
 import "./styles.css";
 
+const AttemptCard: React.FunctionComponent<{
+  attempt: Attempt,
+  onSolve: (nextSolution: number | null) => void
+}> = ({attempt, onSolve}) => {
+  const [value, setValue] = useState<number | null>(null);
+  const [solved, setSolved] = useState<boolean>(false);
+  useEffect(() => {
+    setValue(null);
+    setSolved(false);
+  }, [attempt])
+  return (
+    <div className={solved
+      ? `attempt ${
+          value === attempt.a * attempt.b
+            ? "__correct"
+            : "__incorrect"
+        }`
+      : "attempt"
+    }>
+      <div className="attempt_id">{attempt.id + 1}</div>
+      <div className="attempt_line">
+        <span className="attempt_number">{attempt.a}</span>
+        <span className="attempt_sign">&times;</span>
+        <span className="attempt_number">{attempt.b}</span>
+        <span className="attempt_sign">=</span>
+        <span className="attempt_input">
+          <input
+            onChange={(e) => {
+              const num = Number(e.target.value);
+              if (Number.isFinite(num)) {
+                setValue(num);
+              }
+            }}
+            maxLength={3}
+            value={value ?? ''}
+            type="text"
+          />
+        </span>
+        <button onClick={() => {
+          setSolved(true);
+          onSolve(value);
+        }} type="button">
+          {"Готово"}
+        </button>
+      </div>
+    </div>
+  )
+};
+
 export const ViewAttempts: React.FunctionComponent<{
   attempts: Attempt[],
-  solutions: number[],
-  onSolutionsChange: (nextAttemptsCount: number[]) => void,
+  onSolveAttempt: (nextSolution: Attempt) => void,
   onCancel: () => void,
   onSubmit: () => void
 }> = ({
   attempts,
-  solutions,
-  onSolutionsChange,
+  onSolveAttempt,
   onCancel,
   onSubmit
-}) => (
-  <div>
-    <ul className="attemptsList">
-      {attempts.map(({id, a, b}) => (
-        <li
-          className="attempt"
-          key={id}
-        >
-          <div className="attempt_id">{id + 1}</div>
-          <div className="attempt_line">
-            <span className="attempt_number">{a}</span>
-            <span className="attempt_sign">&times;</span>
-            <span className="attempt_number">{b}</span>
-            <span className="attempt_sign">=</span>
-            <span className="attempt_input">
-              <input
-                onChange={(e) => {
-                  const num = Number(e.target.value);
-                  if (Number.isFinite(num)) {
-                    const nextSolutions = [...solutions];
-                    nextSolutions[id] = num;
-                    onSolutionsChange(nextSolutions);
-                  }
-                }}
-                maxLength={3}
-                value={solutions[id]}
-                type="text"
-              />
-            </span>
-          </div>
-        </li>
-      ))}
-    </ul>
+}) => {
+  const [index, setIndex] = useState<number>(0);
+  return (
     <div>
-      <button onClick={() => onCancel()} type="button">
-        {"Назад"}
-      </button>
-      <button onClick={() => onSubmit()} type="button">
-        {"Проверить результаты"}
-      </button>
+      <AttemptCard
+        attempt={attempts[index]}
+        onSolve={(value) => {
+          onSolveAttempt({
+            ...attempts[index],
+            user: 'default',
+            solution: value
+          });
+          if (index < attempts.length - 1) {
+            setTimeout(() => {
+              setIndex(index + 1);
+            }, 1000)
+          } else {
+            onSubmit();
+          }
+        }}
+      />
+      <div>
+        <button onClick={() => onCancel()} type="button">
+          {"Назад"}
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+
+}
