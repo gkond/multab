@@ -4,8 +4,9 @@ import "./styles.css";
 
 const AttemptCard: React.FunctionComponent<{
   attempt: Attempt,
+  total: number,
   onSolve: (nextSolution: number | null) => void
-}> = ({attempt, onSolve}) => {
+}> = ({attempt, total, onSolve}) => {
   const [value, setValue] = useState<number | null>(null);
   const [solved, setSolved] = useState<boolean>(false);
   useEffect(() => {
@@ -21,7 +22,7 @@ const AttemptCard: React.FunctionComponent<{
         }`
       : "attempt"
     }>
-      <div className="attempt_id">{attempt.id + 1}</div>
+      <div className="attempt_id">{`${attempt.id + 1} / ${total}`}</div>
       <div className="attempt_line">
         <span className="attempt_number">{attempt.a}</span>
         <span className="attempt_sign">&times;</span>
@@ -67,6 +68,7 @@ export const ViewAttempts: React.FunctionComponent<{
     <div>
       <AttemptCard
         attempt={attempts[index]}
+        total={attempts.length}
         onSolve={(value) => {
           onSolveAttempt({
             ...attempts[index],
