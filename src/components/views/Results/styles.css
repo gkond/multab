@@ -1,15 +1,31 @@
 .resultsList {
   margin: 1em 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  column-gap: 5%;
-  row-gap: 1em;
 }
 
 .result {
   list-style: none;
-  padding: 0.5em;
-  border: 1px solid #999;
-  border-radius: 8px;
+}
+.result.__correct {
+  color: green;
+}
+.result.__incorrect {
+  color: red;
+}
+.result.__incorrect .result_solution {
+  text-decoration: line-through;
+}
+.result.__correct:before {
+  font-family: monospace;
+  content: '\02714\00A0';
+}
+.result.__incorrect:before {
+  font-family: monospace;
+  content: '\02718\00A0';
+}
+
+.result_example {
+}
+.result_correct {
+  padding-left: .25em;
 }

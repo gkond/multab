@@ -13,17 +13,29 @@ export const ViewResults: React.FunctionComponent<{
 }) => (
   <div>
     <ul className="resultsList">
-      {solutions.map((solution) => (
-        <li
-          className="result"
-          key={solution.id}
-        >
-          <span>{solution.id + 1} {solution.a} &times; {solution.b}</span>
-          <span> = {solution.solution} </span>
-          {solution.solution === solution.a * solution.b && 'верно'}
-          {solution.solution !== solution.a * solution.b && 'не верно'}
-        </li>
-      ))}
+      {solutions.map((solution) => {
+        const correct = solution.a * solution.b === solution.solution;
+        return (
+          <li
+            className={correct
+              ? "result __correct"
+              : "result __incorrect"
+            }
+            key={solution.id}
+          >
+            <span className="result_example">{solution.a} &times; {solution.b}</span>
+            <span> = </span>
+            <span className="result_solution">
+              {solution.solution}
+            </span>
+            {!correct && (
+              <span className="result_correct">
+                {solution.a * solution.b}
+              </span>
+            )}
+          </li>
+        );
+      })}
     </ul>
     <div>
       <button onClick={() => onSettingsChange()} type="button">
