@@ -47,7 +47,7 @@ const App = () => {
     <div className="app">
       {view === VIEWS.SETTINGS && (
         <View
-          title={"Учим таблицу умножения"}
+          title={"Таблица умножения"}
           content={(
             <ViewSettings
               attemptCount={attemptCount}

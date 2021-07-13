@@ -14,7 +14,7 @@ export const ViewSettings: React.FunctionComponent<{
 }) => (
   <div>
     <label>
-      {"Примеров:"}
+      {"Примеры:"}
       <input
         onChange={(e) => {
           const num = Number(e.target.value);
