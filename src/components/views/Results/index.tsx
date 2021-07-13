@@ -26,7 +26,7 @@ export const ViewResults: React.FunctionComponent<{
       ))}
     </ul>
     <div>
-      <button onClick={() => onSettingsChange} type="button">
+      <button onClick={() => onSettingsChange()} type="button">
         {"Изменить настройки"}
       </button>
       <button onClick={() => onRestart()} type="button">
