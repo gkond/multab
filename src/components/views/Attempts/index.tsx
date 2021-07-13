@@ -41,10 +41,13 @@ const AttemptCard: React.FunctionComponent<{
             type="text"
           />
         </span>
-        <button onClick={() => {
-          setSolved(true);
-          onSolve(value);
-        }} type="button">
+        <button
+          disabled={solved}
+          onClick={() => {
+            setSolved(true);
+            onSolve(value);
+          }} type="button"
+        >
           {"Готово"}
         </button>
       </div>
