@@ -81,7 +81,7 @@ export const ViewAttempts: React.FunctionComponent<{
           if (index < attempts.length - 1) {
             setTimeout(() => {
               setIndex(index + 1);
-            }, 1000)
+            }, 500)
           } else {
             onSubmit();
           }

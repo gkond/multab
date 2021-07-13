@@ -19,7 +19,7 @@ const VIEWS = {
   RESULTS: "RESULTS"
 };
 
-const DEFAULT_ATTEMPT_COUNT = 5;
+const DEFAULT_ATTEMPT_COUNT = 2;
 
 const generateAttempts = (count: number): Attempt[] => {
   const generateRandomInt = (from: number, to: number): number =>
