@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Example} from "./types";
 import {View} from "./components/common/View/";
 import {ViewSettings} from "./components/views/Settings/";
 import {ViewExamples} from "./components/views/Examples/";
@@ -12,19 +13,13 @@ import "./App.css";
 - статистика ошибок
  */
 
-interface Example {
-  id: number;
-  a: number;
-  b: number;
-}
-
 const VIEWS = {
   SETTINGS: "SETTINGS",
   EXAMPLES: "EXAMPLES",
   RESULTS: "RESULTS"
 };
 
-const DEFAULT_EXAMPLE_COUNT = 5   ;
+const DEFAULT_EXAMPLE_COUNT = 5;
 const FROM = 1;
 const TO = 10;
 

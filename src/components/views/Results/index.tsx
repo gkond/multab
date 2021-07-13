@@ -1,10 +1,5 @@
 import React from "react";
-
-interface Example {
-  id: number;
-  a: number;
-  b: number;
-}
+import {Example} from "../../../types";
 
 export const ViewResults: React.FunctionComponent<{
   examples: Example[],
