@@ -1,15 +1,15 @@
 import React from "react";
 
-const MIN_EXAMPLE_COUNT = 1;
-const MAX_EXAMPLE_COUNT = 20;
+const MIN_ATTEMPT_COUNT = 1;
+const MAX_ATTEMPT_COUNT = 20;
 
 export const ViewSettings: React.FunctionComponent<{
-  exampleCount: number,
-  onExampleCountChange: (nextExampleCount: number) => void,
+  attemptCount: number,
+  onAttemptCountChange: (nextAttemptCount: number) => void,
   onStart: () => void
 }> = ({
-  exampleCount,
-  onExampleCountChange,
+  attemptCount,
+  onAttemptCountChange,
   onStart
 }) => (
   <div>
@@ -19,13 +19,13 @@ export const ViewSettings: React.FunctionComponent<{
         onChange={(e) => {
           const num = Number(e.target.value);
           if (Number.isFinite(num)) {
-            let nextExampleCount = num;
-            nextExampleCount = Math.min(nextExampleCount, MAX_EXAMPLE_COUNT)
-            nextExampleCount = Math.max(nextExampleCount, MIN_EXAMPLE_COUNT)
-            onExampleCountChange(nextExampleCount);
+            let nextAttemptCount = num;
+            nextAttemptCount = Math.min(nextAttemptCount, MAX_ATTEMPT_COUNT)
+            nextAttemptCount = Math.max(nextAttemptCount, MIN_ATTEMPT_COUNT)
+            onAttemptCountChange(nextAttemptCount);
           }
         }}
-        value={exampleCount}
+        value={attemptCount}
         type="text"
       />
     </label>

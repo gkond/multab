@@ -1,34 +1,34 @@
 import React from "react";
-import {Example} from "../../../types";
+import {Attempt} from "../../../types";
 import "./styles.css";
 
-export const ViewExamples: React.FunctionComponent<{
-  examples: Example[],
+export const ViewAttempts: React.FunctionComponent<{
+  attempts: Attempt[],
   solutions: number[],
-  onSolutionsChange: (nextExampleCount: number[]) => void,
+  onSolutionsChange: (nextAttemptsCount: number[]) => void,
   onCancel: () => void,
   onSubmit: () => void
 }> = ({
-  examples,
+  attempts,
   solutions,
   onSolutionsChange,
   onCancel,
   onSubmit
 }) => (
   <div>
-    <ul className="examplesList">
-      {examples.map(({id, a, b}) => (
+    <ul className="attemptsList">
+      {attempts.map(({id, a, b}) => (
         <li
-          className="example"
+          className="attempt"
           key={id}
         >
-          <div className="example_id">{id + 1}</div>
-          <div className="example_line">
-            <span className="example_number">{a}</span>
-            <span className="example_sign">&times;</span>
-            <span className="example_number">{b}</span>
-            <span className="example_sign">=</span>
-            <span className="example_input">
+          <div className="attempt_id">{id + 1}</div>
+          <div className="attempt_line">
+            <span className="attempt_number">{a}</span>
+            <span className="attempt_sign">&times;</span>
+            <span className="attempt_number">{b}</span>
+            <span className="attempt_sign">=</span>
+            <span className="attempt_input">
               <input
                 onChange={(e) => {
                   const num = Number(e.target.value);

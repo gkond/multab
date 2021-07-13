@@ -1,21 +1,21 @@
 import React from "react";
-import {Example} from "../../../types";
+import {Attempt} from "../../../types";
 import "./styles.css";
 
 export const ViewResults: React.FunctionComponent<{
-  examples: Example[],
+  attempts: Attempt[],
   solutions: number[],
   onSettingsChange: () => void,
   onRestart: () => void,
 }> = ({
-  examples,
+  attempts,
   solutions,
   onSettingsChange,
   onRestart
 }) => (
   <div>
     <ul className="resultsList">
-      {examples.map(({id, a, b}) => (
+      {attempts.map(({id, a, b}) => (
         <li
           className="result"
           key={id}

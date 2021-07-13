@@ -1,5 +1,7 @@
-export type Example = {
-  id: number;
-  a: number;
-  b: number;
+export type Attempt = {
+  id: number,
+  user: string,
+  a: number,
+  b: number,
+  solution: number | null
 }
