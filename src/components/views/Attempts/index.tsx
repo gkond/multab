@@ -30,6 +30,7 @@ const AttemptCard: React.FunctionComponent<{
         <span className="attempt_sign">=</span>
         <span className="attempt_input">
           <input
+            disabled={solved}
             onChange={(e) => {
               const num = Number(e.target.value);
               if (Number.isFinite(num)) {
@@ -42,7 +43,7 @@ const AttemptCard: React.FunctionComponent<{
           />
         </span>
         <button
-          disabled={solved}
+          disabled={value === null || solved}
           onClick={() => {
             setSolved(true);
             onSolve(value);
