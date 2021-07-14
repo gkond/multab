@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const audio = new Audio('./sfx/click.mp3');
+const audio = new Audio('./click.mp3');
 
 export const Button:React.FunctionComponent<{
   disabled?: boolean,

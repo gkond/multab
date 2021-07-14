@@ -44,54 +44,59 @@ const App = () => {
   const [solutions, setSolutions] = useState<Attempt[]>([]);
   console.log('solutions', solutions);
   return (
-    <div className={styles.app}>
-      {view === VIEWS.SETTINGS && (
-        <View
-          title={"Таблица умножения"}
-          content={(
-            <ViewSettings
-              attemptCount={attemptCount}
-              onAttemptCountChange={(value: number) => {
-                setAttemptCount(value);
-              }}
-              onStart={() => {
-                setView(VIEWS.ATTEMPTS);
-                setAttempts(generateAttempts(attemptCount));
-                setSolutions([]);
-              }}
-            />
-          )}
-        />
-      )}
-      {view === VIEWS.ATTEMPTS && (
-        <View
-          title={"Примеры"}
-          content={(
-            <ViewAttempts
-              attempts={attempts}
-              onSolveAttempt={(nextSolution) => setSolutions([...solutions, nextSolution])}
-              onCancel={() => setView(VIEWS.SETTINGS)}
-              onSubmit={() => setView(VIEWS.RESULTS)}
-            />
-          )}
-        />
-      )}
-      {view === VIEWS.RESULTS && (
-        <View
-          title={"Результат"}
-          content={(
-            <ViewResults
-              solutions={solutions}
-              onSettingsChange={() => setView(VIEWS.SETTINGS)}
-              onRestart={() => {
-                setView(VIEWS.ATTEMPTS);
-                setAttempts(generateAttempts(attemptCount));
-                setSolutions([]);
-              }}
-            />
-          )}
-        />
-      )}
+    <div
+      className={styles.app}
+      style={{ backgroundImage: "url('/bg.jpg')" }}
+    >
+      <div className={styles.app_content}>
+        {view === VIEWS.SETTINGS && (
+          <View
+            title={"Таблица умножения"}
+            content={(
+              <ViewSettings
+                attemptCount={attemptCount}
+                onAttemptCountChange={(value: number) => {
+                  setAttemptCount(value);
+                }}
+                onStart={() => {
+                  setView(VIEWS.ATTEMPTS);
+                  setAttempts(generateAttempts(attemptCount));
+                  setSolutions([]);
+                }}
+              />
+            )}
+          />
+        )}
+        {view === VIEWS.ATTEMPTS && (
+          <View
+            title={"Примеры"}
+            content={(
+              <ViewAttempts
+                attempts={attempts}
+                onSolveAttempt={(nextSolution) => setSolutions([...solutions, nextSolution])}
+                onCancel={() => setView(VIEWS.SETTINGS)}
+                onSubmit={() => setView(VIEWS.RESULTS)}
+              />
+            )}
+          />
+        )}
+        {view === VIEWS.RESULTS && (
+          <View
+            title={"Результат"}
+            content={(
+              <ViewResults
+                solutions={solutions}
+                onSettingsChange={() => setView(VIEWS.SETTINGS)}
+                onRestart={() => {
+                  setView(VIEWS.ATTEMPTS);
+                  setAttempts(generateAttempts(attemptCount));
+                  setSolutions([]);
+                }}
+              />
+            )}
+          />
+        )}
+      </div>
     </div>
   );
 };
