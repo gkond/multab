@@ -1,0 +1,30 @@
+.button {
+  font-family: "Comic Sans MS", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #333333;
+  padding: .1em 1em;
+  border: 0;
+  border-radius: .5em;
+  cursor: pointer;
+  display: inline-block;
+  transition: color .25s, box-shadow .25s;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  background-color: #ffe566;
+  border-bottom: 6px solid #ccb029;
+}
+
+/*background-color: #5cbb73;*/
+/*background-color: #2e9948;*/
+
+.button:hover {
+  background-color: #ffea80;
+}
+
+.button:active {
+  border-top: 6px solid #fff;
+  border-bottom-width: 0;
+}

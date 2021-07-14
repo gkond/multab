@@ -1,5 +1,6 @@
 import React from "react";
 import {Attempt} from "../../../types";
+import {Button} from "../../common/Button";
 import "./styles.css";
 
 export const ViewResults: React.FunctionComponent<{
@@ -30,7 +31,7 @@ export const ViewResults: React.FunctionComponent<{
             </span>
             {!correct && (
               <span className="result_correct">
-                {solution.a * solution.b}
+                (Верный ответ: {solution.a * solution.b})
               </span>
             )}
           </li>
@@ -38,12 +39,14 @@ export const ViewResults: React.FunctionComponent<{
       })}
     </ul>
     <div>
-      <button onClick={() => onSettingsChange()} type="button">
-        {"Изменить настройки"}
-      </button>
-      <button onClick={() => onRestart()} type="button">
-        {"Повторить"}
-      </button>
+      <Button
+        text={"Изменить настройки"}
+        onClick={onSettingsChange}>
+      </Button>
+      <Button
+        text={"Повторить"}
+        onClick={onRestart}>
+      </Button>
     </div>
   </div>
 );

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Attempt} from "../../../types";
+import {Button} from "../../common/Button";
 import "./styles.css";
 
 const AttemptCard: React.FunctionComponent<{
@@ -42,15 +43,15 @@ const AttemptCard: React.FunctionComponent<{
             type="text"
           />
         </span>
-        <button
+
+        <Button
           disabled={value === null || solved}
+          text={"Готово"}
           onClick={() => {
             setSolved(true);
             onSolve(value);
-          }} type="button"
-        >
-          {"Готово"}
-        </button>
+          }}
+        />
       </div>
     </div>
   )
@@ -89,9 +90,10 @@ export const ViewAttempts: React.FunctionComponent<{
         }}
       />
       <div>
-        <button onClick={() => onCancel()} type="button">
-          {"Назад"}
-        </button>
+        <Button
+          text={"Назад"}
+          onClick={onCancel}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import {Button} from "../../common/Button";
 
 const MIN_ATTEMPT_COUNT = 1;
 const MAX_ATTEMPT_COUNT = 20;
@@ -30,10 +31,10 @@ export const ViewSettings: React.FunctionComponent<{
       />
     </label>
     <div>
-      <button onClick={onStart} type="button">
-        {"Начать тренировку"}
-      </button>
-
+      <Button
+        text={"Начать тренировку"}
+        onClick={onStart}>
+      </Button>
     </div>
   </div>
 );
