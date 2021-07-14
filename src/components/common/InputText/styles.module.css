@@ -1,0 +1,11 @@
+.input {
+  margin: 0;
+  max-width: 40px;
+  padding: 0.25em;
+  background: #f0f0f0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: .5em;
+  font-family: "Comic Sans MS", sans-serif;
+  font-size: 32px;
+}

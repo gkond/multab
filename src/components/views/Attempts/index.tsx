@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Attempt} from "../../../types";
 import {Button} from "../../common/Button";
+import {InputText} from "../../common/InputText";
 import cx from "classnames";
 import styles from "./styles.module.css";
 
@@ -27,17 +28,16 @@ const AttemptCard: React.FunctionComponent<{
         <span className={styles.attempt_number}>{attempt.b}</span>
         <span className={styles.attempt_sign}>=</span>
         <span className={styles.attempt_input}>
-          <input
+          <InputText
             disabled={solved}
-            onChange={(e) => {
-              const num = Number(e.target.value);
+            onChange={(value) => {
+              const num = Number(value);
               if (Number.isFinite(num)) {
-                setValue(num);
+                setValue(Number(num));
               }
             }}
             maxLength={3}
-            value={value ?? ''}
-            type="text"
+            value={value}
           />
         </span>
 
