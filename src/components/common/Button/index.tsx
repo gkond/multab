@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const audio = new Audio('./click.mp3');
-
 export const Button:React.FunctionComponent<{
   disabled?: boolean,
   text: string,
@@ -12,6 +10,7 @@ export const Button:React.FunctionComponent<{
     className={styles.button}
     disabled={disabled}
     onClick={() => {
+      const audio = new Audio('./click.mp3');
       audio.play();
       onClick();
     }}
