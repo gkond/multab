@@ -1,7 +1,8 @@
 import React from "react";
 import {Attempt} from "../../../types";
 import {Button} from "../../common/Button";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.module.css";
 
 export const ViewResults: React.FunctionComponent<{
   solutions: Attempt[],
@@ -13,24 +14,24 @@ export const ViewResults: React.FunctionComponent<{
   onRestart
 }) => (
   <div>
-    <ul className="resultsList">
+    <ul className={styles.resultsList}>
       {solutions.map((solution) => {
         const correct = solution.a * solution.b === solution.solution;
         return (
           <li
-            className={correct
-              ? "result __correct"
-              : "result __incorrect"
-            }
+            className={cx(styles.result, {
+              [styles.__correct]: correct,
+              [styles.__incorrect]: !correct,
+            })}
             key={solution.id}
           >
-            <span className="result_example">{solution.a} &times; {solution.b}</span>
+            <span className={styles.result_example}>{solution.a} &times; {solution.b}</span>
             <span> = </span>
-            <span className="result_solution">
+            <span className={styles.result_solution}>
               {solution.solution}
             </span>
             {!correct && (
-              <span className="result_correct">
+              <span className={styles.result_correct}>
                 (Верный ответ: {solution.a * solution.b})
               </span>
             )}

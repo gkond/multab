@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Attempt} from "../../../types";
 import {Button} from "../../common/Button";
-import "./styles.css";
+import cx from "classnames";
+import styles from "./styles.module.css";
 
 const AttemptCard: React.FunctionComponent<{
   attempt: Attempt,
@@ -15,21 +16,17 @@ const AttemptCard: React.FunctionComponent<{
     setSolved(false);
   }, [attempt])
   return (
-    <div className={solved
-      ? `attempt ${
-          value === attempt.a * attempt.b
-            ? "__correct"
-            : "__incorrect"
-        }`
-      : "attempt"
-    }>
-      <div className="attempt_id">{`${attempt.id + 1} / ${total}`}</div>
-      <div className="attempt_line">
-        <span className="attempt_number">{attempt.a}</span>
-        <span className="attempt_sign">&times;</span>
-        <span className="attempt_number">{attempt.b}</span>
-        <span className="attempt_sign">=</span>
-        <span className="attempt_input">
+    <div className={cx(styles.attempt, {
+      [styles.__correct]: value === attempt.a * attempt.b,
+      [styles.__incorrect]: value !== attempt.a * attempt.b
+    })}>
+      <div className={styles.attempt_id}>{`${attempt.id + 1} / ${total}`}</div>
+      <div className={styles.attempt_line}>
+        <span className={styles.attempt_number}>{attempt.a}</span>
+        <span className={styles.attempt_sign}>&times;</span>
+        <span className={styles.attempt_number}>{attempt.b}</span>
+        <span className={styles.attempt_sign}>=</span>
+        <span className={styles.attempt_input}>
           <input
             disabled={solved}
             onChange={(e) => {

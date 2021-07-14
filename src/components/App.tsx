@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Attempt} from "./types";
-import {View} from "./components/common/View/";
-import {ViewSettings} from "./components/views/Settings/";
-import {ViewAttempts} from "./components/views/Attempts/";
-import {ViewResults} from "./components/views/Results/";
-import "./App.css";
+import {Attempt} from "../types";
+import {View} from "./common/View/";
+import {ViewSettings} from "./views/Settings/";
+import {ViewAttempts} from "./views/Attempts/";
+import {ViewResults} from "./views/Results/";
+import styles from "./App.module.css";
 
 /* TODO:
 - 3 жизни
@@ -44,7 +44,7 @@ const App = () => {
   const [solutions, setSolutions] = useState<Attempt[]>([]);
   console.log('solutions', solutions);
   return (
-    <div className="app">
+    <div className={styles.app}>
       {view === VIEWS.SETTINGS && (
         <View
           title={"Таблица умножения"}
