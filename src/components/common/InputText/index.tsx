@@ -20,6 +20,7 @@ export const InputText:React.FunctionComponent<{
       onChange(value);
     }}
     maxLength={maxLength}
+    size={maxLength}
     value={value ?? ''}
     type="text"
   />

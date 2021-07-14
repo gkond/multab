@@ -3,8 +3,8 @@
   padding: 20px;
   max-width: 640px;
   border-radius: 8px;
-  box-shadow: 5px 5px 20px #E0E0E0;
-  background-color: #EEF3FF;
+  box-shadow: 0 5px 20px #E0E0E0;
+  background-color: #EEF3F3;
 }
 
 .view_title {

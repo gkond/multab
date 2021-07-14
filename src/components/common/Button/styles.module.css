@@ -14,17 +14,30 @@
   vertical-align: middle;
   white-space: nowrap;
   background-color: #ffe566;
-  border-bottom: 6px solid #ccb029;
+  border-bottom: 6px solid #CCBB30;
+}
+.button:hover {
+  background-color: #FFEA80;
+}
+.button:active {
+  margin-top: 5px;
+  border-bottom-width: 1px;
+}
+
+.button[disabled] {
+  color: #999999;
+  background-color: #E0E0E0;
+  border-bottom-color: #999999;
+  cursor: default;
+}
+.button[disabled]:hover {
+  background-color: #E0E0E0;
+}
+
+.button + .button {
+  margin-left: .5em;
 }
 
 /*background-color: #5cbb73;*/
 /*background-color: #2e9948;*/
 
-.button:hover {
-  background-color: #ffea80;
-}
-
-.button:active {
-  border-top: 6px solid #fff;
-  border-bottom-width: 0;
-}
