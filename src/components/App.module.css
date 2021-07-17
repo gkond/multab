@@ -1,6 +1,7 @@
 .app {
   flex-grow: 1;
   padding: 40px 0;
+  overflow: auto;
 }
 .app_content {
   position: relative;
