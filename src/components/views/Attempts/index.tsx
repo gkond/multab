@@ -29,7 +29,9 @@ const AttemptCard: React.FunctionComponent<{
         <span className={styles.attempt_sign}>=</span>
         <span className={styles.attempt_input}>
           <InputText
+            autoFocus
             disabled={solved}
+            key={attempt.id}
             onChange={(value) => {
               const num = Number(value);
               if (Number.isFinite(num)) {
